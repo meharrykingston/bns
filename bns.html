@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BNS Acting & Dance Academy</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --gold: #f4a51c;
+        --gold2: #ff7a00;
+        --dark: #050505;
+        --card: #111;
+        --muted: #aaa;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(
+          circle at top,
+          #241400 0%,
+          #070707 38%,
+          #000 100%
+        );
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow-x: hidden;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .navbar {
+        background: rgba(0, 0, 0, 0.78);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(244, 165, 28, 0.22);
+        transition: 0.35s ease;
+      }
+
+      .navbar.scrolled {
+        background: #000;
+        box-shadow: 0 10px 40px rgba(244, 165, 28, 0.14);
+      }
+
+      .logo {
+        height: 62px;
+        object-fit: contain;
+      }
+
+      .gold {
+        color: var(--gold);
+      }
+
+      .btn-gold {
+        background: linear-gradient(135deg, var(--gold), var(--gold2));
+        color: #000;
+        border: none;
+        font-weight: 900;
+        padding: 13px 30px;
+        border-radius: 50px;
+        box-shadow: 0 0 30px rgba(244, 165, 28, 0.28);
+      }
+
+      .btn-gold:hover {
+        color: #000;
+        transform: translateY(-2px);
+      }
+
+      .btn-outline-gold {
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        padding: 13px 30px;
+        border-radius: 50px;
+        font-weight: 800;
+      }
+
+      .btn-outline-gold:hover {
+        background: var(--gold);
+        color: #000;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 130px 0 80px;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.95),
+            rgba(0, 0, 0, 0.68),
+            rgba(0, 0, 0, 0.96)
+          ),
+          url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 7vw, 88px);
+        font-weight: 950;
+        text-transform: uppercase;
+        line-height: 0.95;
+        letter-spacing: 2px;
+      }
+
+      .hero-logo {
+        max-width: 360px;
+        filter: drop-shadow(0 0 40px rgba(244, 165, 28, 0.4));
+        animation: floatLogo 4s ease-in-out infinite;
+      }
+
+      @keyframes floatLogo {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+
+      section {
+        padding: 85px 0;
+      }
+
+      .section-title {
+        font-size: clamp(32px, 4vw, 54px);
+        font-weight: 950;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+
+      .card-dark {
+        background: linear-gradient(180deg, #151515, #070707);
+        border: 1px solid rgba(244, 165, 28, 0.22);
+        border-radius: 24px;
+        padding: 28px;
+        height: 100%;
+        transition: 0.35s ease;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      .card-dark:hover {
+        transform: translateY(-8px);
+        border-color: rgba(244, 165, 28, 0.75);
+        box-shadow: 0 25px 70px rgba(244, 165, 28, 0.12);
+      }
+
+      .icon-box {
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, var(--gold), var(--gold2));
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        margin-bottom: 18px;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.045);
+        border: 1px solid rgba(244, 165, 28, 0.25);
+        border-radius: 22px;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .counter {
+        font-size: 42px;
+        font-weight: 950;
+        color: var(--gold);
+      }
+
+      .mentor-img,
+      .gallery-img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 28px;
+        border: 1px solid rgba(244, 165, 28, 0.3);
+        box-shadow: 0 0 60px rgba(244, 165, 28, 0.13);
+      }
+
+      .mentor-img {
+        height: 520px;
+      }
+      .gallery-img {
+        height: 240px;
+      }
+
+      .list-clean {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .list-clean li {
+        padding: 9px 0;
+        color: var(--muted);
+      }
+
+      .list-clean li::before {
+        content: "✓";
+        color: var(--gold);
+        font-weight: 900;
+        margin-right: 10px;
+      }
+
+      .popular {
+        border: 2px solid var(--gold);
+        transform: scale(1.03);
+      }
+
+      .badge-gold {
+        background: var(--gold);
+        color: #000;
+        font-weight: 900;
+        border-radius: 50px;
+        padding: 8px 16px;
+      }
+
+      .cta {
+        background: linear-gradient(135deg, #ffb11f, #ff7a00);
+        color: #000;
+        border-radius: 34px;
+        padding: 60px 30px;
+        box-shadow: 0 0 85px rgba(244, 165, 28, 0.25);
+      }
+
+      .accordion-item {
+        background: #111;
+        border: 1px solid rgba(244, 165, 28, 0.2);
+        color: white;
+        margin-bottom: 14px;
+        border-radius: 18px !important;
+        overflow: hidden;
+      }
+
+      .accordion-button {
+        background: #111;
+        color: white;
+        font-weight: 800;
+      }
+
+      .accordion-button:not(.collapsed) {
+        background: #1a1203;
+        color: var(--gold);
+      }
+
+      .accordion-body {
+        color: #aaa;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(36px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .footer {
+        background: #030303;
+        border-top: 1px solid rgba(244, 165, 28, 0.25);
+        padding: 45px 0;
+        color: #aaa;
+      }
+
+      .mobile-sticky-cta {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          text-align: center;
+          padding-top: 120px;
+        }
+        .hero-logo {
+          max-width: 260px;
+          margin-top: 35px;
+        }
+        .popular {
+          transform: none;
+        }
+        .mentor-img {
+          height: 360px;
+        }
+        .mobile-sticky-cta {
+          display: block;
+          position: fixed;
+          bottom: 14px;
+          left: 14px;
+          right: 14px;
+          z-index: 999;
+        }
+        .mobile-sticky-cta a {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+          <img src="logo.png" class="logo" alt="BNS Logo" />
+          <span class="fw-bold text-white d-none d-md-inline"
+            >BNS Acting & Dance Academy</span
+          >
+        </a>
+
+        <button
+          class="navbar-toggler bg-warning"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+          <ul class="navbar-nav align-items-lg-center gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#training">Training</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#mentor">Mentor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#programs">Programs</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-gold ms-lg-3" href="#enroll">Enroll Now</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7 reveal">
+            <p class="gold fw-bold mb-3">
+              First Time in India • Sector 62, Noida
+            </p>
+            <h1>BNS Acting &<br /><span class="gold">Dance Academy</span></h1>
+            <p class="lead mt-4 text-light">
+              Learn acting, dance, camera confidence, dialogue delivery,
+              auditions and personality development from celebrity trainer
+              Shakur Sir.
+            </p>
+
+            <div
+              class="d-flex flex-wrap gap-3 mt-4 justify-content-center justify-content-lg-start"
+            >
+              <a href="#programs" class="btn btn-gold">Explore Programs</a>
+              <a href="tel:+919120232087" class="btn btn-outline-gold"
+                >Call Now</a
+              >
+            </div>
+
+            <div class="row g-3 mt-5">
+              <div class="col-4">
+                <div class="stat-card">
+                  <div class="counter" data-target="30">0+</div>
+                  <small>Years</small>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-card">
+                  <div class="counter" data-target="200">0+</div>
+                  <small>Films</small>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-card">
+                  <div class="counter" data-target="100">0+</div>
+                  <small>Actors</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 text-center reveal">
+            <img src="logo.png" class="img-fluid hero-logo" alt="BNS Logo" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="training">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <p class="gold fw-bold">YOUR JOURNEY STARTS HERE</p>
+          <h2 class="section-title">Become Camera Ready</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-3 reveal">
+            <div class="card-dark">
+              <div class="icon-box">🎬</div>
+              <h4>An Actor</h4>
+              <p class="text-secondary">
+                Perform naturally on screen with confidence.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 reveal">
+            <div class="card-dark">
+              <div class="icon-box">🎭</div>
+              <h4>A Performer</h4>
+              <p class="text-secondary">
+                Master expression, emotion and body language.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 reveal">
+            <div class="card-dark">
+              <div class="icon-box">📽️</div>
+              <h4>Screen Artist</h4>
+              <p class="text-secondary">
+                Create memorable characters for camera.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 reveal">
+            <div class="card-dark">
+              <div class="icon-box">⭐</div>
+              <h4>Confident Personality</h4>
+              <p class="text-secondary">
+                Stand out in auditions, interviews and life.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-black" id="mentor">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5 reveal">
+            <img class="mentor-img" src="img.jpg" alt="Mentor" />
+          </div>
+
+          <div class="col-lg-7 reveal">
+            <p class="gold fw-bold">INDUSTRY EXPERT & MENTOR</p>
+            <h2 class="section-title">Led by Shakur Sir</h2>
+            <p class="lead text-secondary">
+              30+ years of film industry experience. Assistant Director since
+              1987, worked in 200+ films, choreographer, writer, director and
+              actor trainer.
+            </p>
+
+            <div class="row g-3 mt-4">
+              <div class="col-sm-4">
+                <div class="card-dark text-center">
+                  <h2 class="gold">30+</h2>
+                  <p>Years Experience</p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card-dark text-center">
+                  <h2 class="gold">200+</h2>
+                  <p>Films Worked On</p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card-dark text-center">
+                  <h2 class="gold">100+</h2>
+                  <p>Actors Trained</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <p class="gold fw-bold">WHAT MAKES BNS DIFFERENT</p>
+          <h2 class="section-title">Complete Industry Training</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4 reveal">
+            <div class="card-dark">
+              <h4 class="gold">Camera Acting</h4>
+              <p>
+                Professional on-camera performance techniques used in film
+                industry.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="card-dark">
+              <h4 class="gold">Expression & Dialogue</h4>
+              <p>
+                Voice modulation, emotional control and powerful screen
+                expressions.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="card-dark">
+              <h4 class="gold">Personality Development</h4>
+              <p>Build confidence and magnetic screen presence.</p>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="card-dark">
+              <h4 class="gold">Audition Preparation</h4>
+              <p>Portfolio, casting network and audition clearance guidance.</p>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="card-dark">
+              <h4 class="gold">Commercial Project</h4>
+              <p>
+                One commercial project explicitly included in the training
+                journey.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="card-dark">
+              <h4 class="gold">Degree Support</h4>
+              <p>
+                Mass Media, Journalism & Acting for long-term career security.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="bg-black">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <p class="gold fw-bold">TRAINING PROGRAMS</p>
+          <h2 class="section-title">Choose Your Pathway</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4 reveal">
+            <div class="card-dark">
+              <h1 class="gold">30 Days</h1>
+              <h4>Confidence Program</h4>
+              <ul class="list-clean mt-4">
+                <li>Basic acting techniques</li>
+                <li>Camera confidence building</li>
+                <li>Expression fundamentals</li>
+                <li>Intro to dialogue delivery</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 reveal">
+            <div class="card-dark popular">
+              <span class="badge-gold">MOST POPULAR</span>
+              <h1 class="gold mt-3">3 Months</h1>
+              <h4>Acting Foundation Program</h4>
+              <ul class="list-clean mt-4">
+                <li>Complete acting training</li>
+                <li>Camera performance mastery</li>
+                <li>Dance & movement training</li>
+                <li>Personality development</li>
+                <li>Audition preparation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 reveal">
+            <div class="card-dark">
+              <h1 class="gold">6 Months</h1>
+              <h4>Professional Industry Preparation</h4>
+              <ul class="list-clean mt-4">
+                <li>Advanced acting techniques</li>
+                <li>Industry insider knowledge</li>
+                <li>Portfolio & showreel creation</li>
+                <li>Career direction guidance</li>
+                <li>Industry networking opportunities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6 reveal">
+            <div class="card-dark">
+              <h3 class="gold">Who Should Join?</h3>
+              <ul class="list-clean mt-3">
+                <li>Students interested in acting careers</li>
+                <li>Aspiring Bollywood actors</li>
+                <li>Influencers wanting strong screen presence</li>
+                <li>Beginners with passion but no guidance</li>
+                <li>Performers preparing for auditions</li>
+                <li>Anyone ready to step into entertainment</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="card-dark">
+              <h3 class="gold">Why Students Choose BNS</h3>
+              <ul class="list-clean mt-3">
+                <li>Industry mentor training</li>
+                <li>Professional acting environment</li>
+                <li>Camera based learning approach</li>
+                <li>Personality transformation support</li>
+                <li>Structured performance development</li>
+                <li>Opportunity focused guidance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-black">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <p class="gold fw-bold">TRAINING ENVIRONMENT</p>
+          <h2 class="section-title">Inside BNS Academy</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4 reveal">
+            <img
+              class="gallery-img"
+              src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80"
+              alt=""
+            />
+            <h5 class="mt-3 gold">Camera Training</h5>
+          </div>
+          <div class="col-md-4 reveal">
+            <img
+              class="gallery-img"
+              src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=80"
+              alt=""
+            />
+            <h5 class="mt-3 gold">Dance & Movement</h5>
+          </div>
+          <div class="col-md-4 reveal">
+            <img
+              class="gallery-img"
+              src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80"
+              alt=""
+            />
+            <h5 class="mt-3 gold">Screen Performance</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="enroll">
+      <div class="container">
+        <div class="cta text-center reveal">
+          <h2 class="display-5 fw-bold">Limited Seats Available</h2>
+          <p class="lead fw-semibold">
+            Start your acting journey today with professional training, degree
+            support and one commercial project.
+          </p>
+          <a
+            href="tel:+919120232087"
+            class="btn btn-dark btn-lg rounded-pill px-5 mt-3"
+            >Call / WhatsApp: +91 9120232087</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <p class="gold fw-bold">COMMON QUESTIONS</p>
+          <h2 class="section-title">FAQs</h2>
+        </div>
+
+        <div class="accordion reveal" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq1"
+              >
+                Can beginners join BNS Acting Academy?
+              </button>
+            </h2>
+            <div
+              id="faq1"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Yes. The academy is suitable for beginners, aspiring actors,
+                performers and camera-facing creators.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq2"
+              >
+                Is camera acting included?
+              </button>
+            </h2>
+            <div
+              id="faq2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Yes. Camera acting, expressions, dialogue delivery, screen
+                presence and audition preparation are included.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq3"
+              >
+                Is there any commercial project?
+              </button>
+            </h2>
+            <div
+              id="faq3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Yes. One commercial project is explicitly included as part of
+                the training journey.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer text-center">
+      <div class="container">
+        <img src="logo.png" class="logo mb-3" alt="BNS Logo" />
+        <h5 class="text-white">BNS Acting & Dance Academy</h5>
+        <p>Avvaire Educational Hub, Sector 62, Noida</p>
+        <p>
+          Train with experience. Perform with confidence. Enter the industry
+          with preparation.
+        </p>
+        <small>© 2026 BNS Acting & Dance Academy. All rights reserved.</small>
+      </div>
+    </footer>
+
+    <div class="mobile-sticky-cta">
+      <a href="tel:+919120232087" class="btn btn-gold">Enroll Now / Call BNS</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+      });
+
+      const counters = document.querySelectorAll(".counter");
+      let counterStarted = false;
+
+      function startCounters() {
+        if (counterStarted) return;
+        counterStarted = true;
+
+        counters.forEach((counter) => {
+          const target = Number(counter.dataset.target);
+          let current = 0;
+          const speed = target / 90;
+
+          function update() {
+            current += speed;
+            if (current < target) {
+              counter.innerText = Math.ceil(current) + "+";
+              requestAnimationFrame(update);
+            } else {
+              counter.innerText = target + "+";
+            }
+          }
+
+          update();
+        });
+      }
+
+      const revealItems = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              if (entry.target.querySelector(".counter")) startCounters();
+            }
+          });
+        },
+        { threshold: 0.18 },
+      );
+
+      revealItems.forEach((item) => observer.observe(item));
+    </script>
+  </body>
+</html>
